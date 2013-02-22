@@ -1,0 +1,48 @@
+* Source Files & Descriptions:
+  ---------------------------
+  
+  Login.c: This file contains all the functionalities required for Login Server.
+  
+  Supernode.c: All Supernode actions are written in this file.
+  
+  User.c: Implemented Phase wise functionalities required in user. I'm using fork() to simulate 3 users.
+  
+  Makefile: contains commands to prepare executables.
+ 
+* How to compile:
+  --------------
+  
+  Please type 'gmake' in the directory which contains my source files, which will create executables named 'Login',
+  'Supernode' & 'User'. In order to remove these executables just type 'gmake clean'.
+  
+* How to run:
+  ----------
+  
+  Note: All the test files(UserPassMatch.txt, UserPass1.txt & UserText1.txt etc...)
+		should be present in the same directory as my source files.
+
+  In first window, run the executable named 'Login' like this: Login <file_name>
+  (file_name will be UserPassMatch.txt)
+  In second window, run 'Supernode' like this: Supernode
+  (no need to give commandline any arguments)
+  and In Third window, run 'User' like this: User
+  (no need to give commandline any arguments)
+  
+
+* I've used sleep() at few places to synchronize the sendto() & recvfrom(). So, please be patient if it stops
+  few seconds.
+
+* Format of messages exchanged:
+  ----------------------------
+  
+  User -> Login server: "Login#username password"
+  Login server -> User: "Accepted#" (or) "Rejected" and "Supernode_IP port"
+  
+  Login server -> Supernode: pairs contain “username/IP address”
+  
+  User -> Supernode: “<To user>-<From user>: <message>”
+  Supernode -> User: "<To user>-<From user>: <message>”
+  
+ * As part of this project, I learnt how to read input from a file, store it in an organized way, How to write a
+   TCP & UDP client-server program, exchange messages between them and close the descriptors when ever it is 
+   required.
